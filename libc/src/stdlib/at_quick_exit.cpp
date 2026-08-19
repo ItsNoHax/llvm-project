@@ -10,11 +10,12 @@
 #include "hdr/types/atexithandler_t.h"
 #include "src/__support/common.h"
 #include "src/__support/macros/config.h"
+#include "src/__support/macros/attributes.h"
 #include "src/stdlib/exit_handler.h"
 
 namespace LIBC_NAMESPACE_DECL {
 
-constinit ExitCallbackList at_quick_exit_callbacks;
+LIBC_CONSTINIT ExitCallbackList at_quick_exit_callbacks;
 
 LLVM_LIBC_FUNCTION(int, at_quick_exit, (__atexithandler_t callback)) {
   return add_atexit_unit(
